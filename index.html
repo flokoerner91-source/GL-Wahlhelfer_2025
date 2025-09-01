@@ -1,0 +1,491 @@
+<!doctype html>
+<html lang="de" data-theme="auto">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<title>Lokaler Wahlhelfer – Bergisch Gladbach 2025 (offline)</title>
+<style>
+  :root{
+    --bg:#f8f9fa; --fg:#2b2b2b; --card:#ffffff; --card-border:#dee3eb; --shadow:0 4px 14px rgba(0,0,0,.08);
+    --muted:#6b7785; --heading:#3f89c8; --accent1:#8ccdf0; --accent2:#6ad6d1; --bar-bg:#e8ebf0;
+    --agree:#a8e6a3; --agree-b:#7bcf74; --agree-t:#1d4d1b; 
+    --neutral:#e4e8ee; --neutral-b:#c6ccd5; --neutral-t:#3c4049;
+    --disagree:#f7a8a8; --disagree-b:#e07c7c; --disagree-t:#5a1717;
+    --chip-blue-bg:#d6e8ff; --chip-blue-b:#a9caf7; --chip-blue-t:#0d3a73;
+    --chip-green-bg:#d9f3d9; --chip-green-b:#a4e1a4; --chip-green-t:#0f4d23;
+    --chip-white-bg:#ffffff; --chip-white-b:#d7dee8; --chip-white-t:#2b2b2b;
+    --chip-rose-bg:#ffe0ef; --chip-rose-b:#ffc2dc; --chip-rose-t:#711a3a;
+  }
+  [data-theme="dark"]{
+    --bg:#0e1116; --fg:#e8edf4; --card:#141922; --card-border:#243045; --shadow:0 6px 22px rgba(0,0,0,.35);
+    --muted:#9fb0c6; --heading:#8ccdf0; --accent1:#82c8ff; --accent2:#46c1bd; --bar-bg:#1f2a3f;
+    --agree:#b9f0bd; --agree-b:#82d78a; --agree-t:#0e3c20;
+    --neutral:#dbe2eb; --neutral-b:#bfc9d6; --neutral-t:#233042;
+    --disagree:#ffc3c3; --disagree-b:#ff9d9d; --disagree-t:#3f1111;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,sans-serif;background:var(--bg);color:var(--fg)}
+  header{padding:22px 16px;text-align:center;background:linear-gradient(135deg,var(--bg), #d8e8f7);border-bottom:1px solid var(--card-border)}
+  [data-theme="dark"] header{background:linear-gradient(135deg,var(--bg), #0f2235)}
+  h1{margin:0 0 6px;font-weight:800;font-size:22px;color:var(--heading)}
+  @media(min-width:768px){h1{font-size:28px}}
+  p.lead{margin:0;color:var(--muted);font-size:14px}
+  .progress-wrap{position:sticky;top:0;z-index:9;background:var(--bg);padding:8px 12px;border-bottom:1px solid var(--card-border)}
+  .progress{height:12px;background:var(--bar-bg);border-radius:999px;overflow:hidden;box-shadow:inset 0 1px 2px rgba(0,0,0,.06)}
+  .progress>span{display:block;height:100%;width:0%;background:linear-gradient(90deg,var(--accent1),var(--accent2));transition:width .35s ease}
+  .progress-info{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--muted);margin-bottom:6px}
+
+  main{max-width:980px;margin:18px auto 48px;padding:0 12px}
+  .card{background:var(--card);border:1px solid var(--card-border);border-radius:18px;box-shadow:var(--shadow);padding:14px;margin:12px 0}
+  h2{font-size:18px;margin:0 0 10px;color:var(--heading)}
+
+  .legend{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+  .chip{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:999px;border:1px solid; font-size:12px}
+  .chip.blue{background:var(--chip-blue-bg); border-color:var(--chip-blue-b); color:var(--chip-blue-t)}
+  .chip.green{background:var(--chip-green-bg); border-color:var(--chip-green-b); color:var(--chip-green-t)}
+  .chip.white{background:var(--chip-white-bg); border-color:var(--chip-white-b); color:var(--chip-white-t)}
+  .chip.rose{background:var(--chip-rose-bg); border-color:var(--chip-rose-b); color:var(--chip-rose-t)}
+
+  .thesis{padding:12px;border-radius:14px;border:1px solid var(--card-border);background:#f2f5f9;margin-bottom:10px}
+  [data-theme="dark"] .thesis{background:#172133}
+  .thesis-title{font-weight:600;margin-bottom:8px;font-size:15px;line-height:1.35}
+  .controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+
+  .pill{display:inline-flex;align-items:center;gap:10px;padding:10px 14px 10px 46px;border-radius:999px;border:2px solid transparent;cursor:pointer;user-select:none;font-weight:700;transition:.18s ease; position:relative; min-height:44px}
+  .pill input{position:absolute; opacity:0; pointer-events:none}
+  .pill::before{content:""; width:22px; height:22px; border-radius:50%; border:2px solid #111; background:transparent; position:absolute; left:14px; top:50%; transform:translateY(-50%)}
+  [data-theme="dark"] .pill::before{border-color:#000}
+  .pill.agree{background:var(--agree);border-color:var(--agree-b);color:var(--agree-t)}
+  .pill.neutral{background:var(--neutral);border-color:var(--neutral-b);color:var(--neutral-t)}
+  .pill.disagree{background:var(--disagree);border-color:var(--disagree-b);color:var(--disagree-t)}
+  .pill.emph{background:#eef3f9; border-color:#ccd7e5; color:#334155}
+  [data-theme="dark"] .pill.emph{background:#132033; border-color:#274569; color:#dbe9ff}
+  .pill:hover{filter:brightness(.98)}
+  .pill.selected{box-shadow:0 0 0 6px rgba(140,205,240,.45), 0 2px 10px rgba(0,0,0,.08); transform:translateY(-1px)}
+  .pill.selected::before{content:"✓"; display:flex; align-items:center; justify-content:center; font-weight:900; font-size:14px; color:#000; background:#fff; border-color:#000}
+  .pill.dim{opacity:.45; filter:grayscale(.4)}
+  .pill.emph.selected{ background: var(--agree); border-color: var(--agree-b); color: var(--agree-t); }
+  .result{display:flex;align-items:center;justify-content:space-between;padding:10px 12px;border-radius:12px;background:#eef3f9;border:1px solid var(--card-border);margin:6px 0}
+  [data-theme="dark"] .result{background:#152033}
+  .bar{height:10px;background:var(--bar-bg);border-radius:8px;overflow:hidden}
+  .bar>span{display:block;height:100%;background:linear-gradient(90deg,var(--accent1),var(--accent2));width:0%}
+  .muted{color:var(--muted)}
+  button{padding:10px 14px;border-radius:12px;border:1px solid #5aa6d6;background:linear-gradient(135deg,var(--accent1),var(--accent2));color:#fff;cursor:pointer;font-weight:800;letter-spacing:.2px}
+  button:disabled{opacity:.45;cursor:not-allowed;filter:grayscale(.2)}
+footer { background: var(--bg);
+  border-top: 1px solid var(--card-border);
+  padding: 14px 12px;
+  font-size: 12px;
+  color: var(--muted);
+  display: flex;
+  flex-direction: column;
+  align-items: center;   /* zentriert horizontal */
+  text-align: center;    /* zentriert Text */
+  gap: 6px;
+  margin-top: 24px;}
+
+  .celebrate{position:fixed;left:50%;transform:translateX(-50%);top:-80px;background:#fffbe6;color:#5c4a14;border:1px solid #ffe599;border-radius:12px;padding:10px 14px;box-shadow:0 6px 20px rgba(0,0,0,.15);font-weight:700;display:flex;align-items:center;gap:8px}
+  [data-theme="dark"] .celebrate{background:#3a2d10;color:#ffe3a2;border-color:#6a5522}
+  .celebrate.show{animation:drop .9s ease forwards, fadeout 3.2s ease 2.2s forwards}
+  @keyframes drop{0%{top:-80px;opacity:0}60%{top:16px;opacity:1}100%{top:12px;opacity:1}}
+  @keyframes fadeout{from{opacity:1}to{opacity:0}}
+</style>
+</head>
+<body>
+<div id="celebrate" class="celebrate" style="display:none">
+  <div style="width:18px;height:18px;border-radius:50%;background:radial-gradient(rgba(255,215,0,.7), rgba(255,215,0,0) 60%);"></div>
+  <div>Alle 40 beantwortet! 🎉 Du kannst jetzt auswerten.</div>
+</div>
+
+<header>
+  <h1>Lokaler Wahlhelfer – Bergisch Gladbach 2025</h1>
+  <p class="lead">Offline • 40 Thesen • Gewichtung: Bürgermeister 40%, Stadtrat 30%, Kreistag 20%, Landrat 10% • <b>Version 1.17</b></p>
+</header>
+
+<div class="progress-wrap">
+  <div class="progress-info">
+    <span id="progText">Beantwortet: 0/40 (0%)</span>
+    <span id="progHint">Beantworte mindestens 20 Fragen</span>
+  </div>
+  <div class="progress"><span id="progBar"></span></div>
+</div>
+
+<main>
+  <section class="card">
+    <h2>Willkommen!</h2>
+    <p>Dieses Tool hilft dir, deine Stimmen zur Kommunalwahl in Bergisch Gladbach zu orientieren. Es basiert auf <b>40 Thesen</b> (je 10 zu <i>Bürgermeister</i>, <i>Stadtrat</i>, <i>Kreistag</i>, <i>Landrat</i>). Die Gewichtung orientiert sich an der lokalen Wirkung: <b>40 %</b> Bürgermeister, <b>30 %</b> Stadtrat, <b>20 %</b> Kreistag, <b>10 %</b> Landrat.</p>
+    <div class="legend">
+      <span class="chip blue">Bürgermeister = blauer Zettel</span>
+      <span class="chip green">Stadtrat = grüner Zettel</span>
+      <span class="chip white">Kreistag = weißer Zettel</span>
+      <span class="chip rose">Landrat = rosa Zettel</span>
+    </div>
+    <div style="margin-top:10px;display:flex;gap:8px;justify-content:flex-end">
+      <div style="display:inline-flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--card-border);border-radius:999px;padding:6px 10px;color:var(--muted)">
+        <span>Darstellung</span>
+        <select id="themeSel" aria-label="Darstellung wählen" style="background:transparent;border:none;color:var(--fg);font-weight:700">
+          <option value="auto">Auto (System)</option>
+          <option value="light">Hell</option>
+          <option value="dark">Dunkel</option>
+        </select>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hier werden die 4 Blöcke mit je 10 Thesen gerendert -->
+  <div id="app"></div>
+
+  <section class="card">
+    <h2>Ergebnis</h2>
+    <div id="progressNote" class="muted" style="margin:6px 0;"></div>
+    <div id="afdWarn"></div>
+    <div id="results"></div>
+    <div class="actions" style="display:flex;gap:12px;flex-wrap:wrap;margin-top:12px">
+      <button id="calc" class="primary" disabled>Auswerten</button>
+      <button id="reset">Antworten löschen</button>
+    </div>
+  </section>
+
+  <section class="card" style="background:#f7f9fc; border-color:#dbe4f0; color:#334155; margin-top:16px">
+    <h2 style="margin-top:0">Disclaimer</h2>
+    <div style="font-size:14px; line-height:1.6">
+      <p>Dieses Tool ist ein rein privates Projekt zur politischen Information.<br/>
+      Es handelt sich nicht um ein offizielles Angebot der Bundeszentrale für politische Bildung, staatlicher Stellen oder politischer Parteien.</p>
+      <p>Die dargestellten Ergebnisse dienen ausschließlich der Orientierung.<br/>
+      Es wird keine Garantie für Richtigkeit, Vollständigkeit oder Aktualität übernommen.</p>
+      <p>Es werden keinerlei personenbezogene Daten gespeichert oder ausgewertet.</p>
+      <p>Eine Haftung für eventuelle Schäden oder Konsequenzen, die aus der Nutzung dieses Tools entstehen, ist ausgeschlossen.</p>
+      <p>Die Gewichtungen und Auswertungen basieren auf einer privaten Einschätzung und stellen keine Wahlempfehlung dar. Jede Nutzerin und jeder Nutzer ist aufgefordert, sich eigenständig über Parteien und Programme zu informieren.</p>
+    </div>
+    <div style="margin-top:12px; font-size:12px; opacity:.9"><strong>Impressum:</strong> Florian Körner · Immanuel-Kant-Straße 3 · 51427 Bergisch Gladbach</div>
+  </section>
+</main>
+
+<footer>
+  <div>Lokaler Wahlhelfer – Bergisch Gladbach 2025 · <b>Version 1.19</b></div>
+  <div>Erstellt von <b>Florian Körner</b> · mit Unterstützung durch <b>KI</b></div>
+  <div>Teilen: Datei am besten per E-Mail oder Cloud (WhatsApp blockiert HTML/ZIP)</div>
+  <div class="muted">© 2025</div>
+</footer>
+
+
+<script>
+// ===== Theme handling: PC startet hell, Handy auto; Nutzerwahl wird gemerkt =====
+(function(){
+  var root=document.documentElement, sel=document.getElementById('themeSel');
+  function applyTheme(m){ root.setAttribute('data-theme',m); try{localStorage.setItem('wahlhelfer-theme',m);}catch(e){} }
+  function isMobile(){ return /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || (window.matchMedia && window.matchMedia("(max-width: 640px)").matches); }
+  (function init(){
+    var saved=null; try{saved=localStorage.getItem('wahlhelfer-theme');}catch(e){}
+    var mode = saved || (isMobile() ? 'auto' : 'light');
+    if(sel) sel.value = mode;
+    applyTheme(mode);
+  })();
+  if(sel) sel.addEventListener('change', function(e){ applyTheme(e.target.value); });
+})();
+
+// ===== Gewichtung & Zettel-Farben =====
+var WEIGHTS = { 'Bürgermeister':0.40, 'Stadtrat':0.30, 'Kreistag':0.20, 'Landrat':0.10 };
+var COLOR_LABELS = { 'Bürgermeister':'(blauer Zettel)','Stadtrat':'(grüner Zettel)','Kreistag':'(weißer Zettel)','Landrat':'(rosa Zettel)' };
+
+// ===== 40 Thesen (10 je Block) =====
+const THESES = {
+  'Bürgermeister': [
+    "Schulen zuerst: kurzfristige Sanierungs- und Ausstattungsbudgets je Schule einführen (unkomplizierte, pauschale Mittel).",
+    "Zanders-Areal zügig entwickeln – mit gemischter Nutzung (Arbeit/Bildung/Wohnen) statt Aufschub.",
+    "Bildungs-Campus / Exzellenz-Baustein auf dem Zanders-Areal priorisieren und eng mit dem Kreis koordinieren.",
+    "Laufende Straßen-/Gehwegsanierungen vorziehen, neue Projekte nachrangig starten.",
+    "Schulwegsicherheit & Radverkehr deutlich stärken – auch wenn dafür Parkplätze entfallen.",
+    "Bezahlbarer Wohnraum: verbindliche Sozialwohnungs-Quoten bei größeren Neubauten festlegen.",
+    "Pendlerverkehr verbessern: S-Bahn/KVB-Angebote aktiv unterstützen und städtische Baustellen koordiniert steuern.",
+    "Klimaresilienz als Standard (Schwammstadt, Hitzeschutz, Entsiegelung) in allen Bauprojekten verankern.",
+    "Verwaltung spürbar beschleunigen (klare Fristen, 100-Tage-Maßnahmen, mehr digitale Services).",
+    "Solide Finanzen sichern – aber zentrale Zukunftsinvestitionen (Schule, Mobilität, Digitalisierung) ermöglichen."
+  ],
+  'Stadtrat': [
+    "OGS-Ausbau (Plätze, Räume, Personal) priorisieren – v. a. in Refrath/Bensberg.",
+    "Für schnellere Schulsanierungen sind zeitweise höhere Kredite/Abgaben vertretbar.",
+    "Das Programm 2025–2027 zur Sanierung von Straßen & Radwegen konsequent abarbeiten.",
+    "Zuerst Nachverdichtung & Umnutzung, bevor neue Flächen versiegelt werden.",
+    "Sozialwohnraum verbindlich in neue Quartiere integrieren – fair über Stadtteile verteilt.",
+    "Parkraummanagement sozialverträglich gestalten (Digitallösungen plus analoge/Bar-Optionen).",
+    "Vereine, Sport & Jugendarbeit verlässlich fördern (Sanierungen, Belegungszeiten, Ehrenamt).",
+    "Hitze-/Starkregenvorsorge (Straßenbäume, Entsiegelung, Retentionsflächen) höher gewichten als neue Straßen.",
+    "Digitale Verwaltung & Schulen (Terminbuchung, Online-Anträge, Infoboards) flächig ausrollen.",
+    "Sachkoalitionen statt Lagerdenken: je Thema mit den besten Lösungen zusammenarbeiten."
+  ],
+  'Kreistag': [
+    "S11: zweigleisiger Ausbau & dichterer Takt – mit verlässlichem Ersatzverkehr bei Sperrungen.",
+    "VRS/KVB-Angebote Richtung Köln/Bensberg verbessern (Takt, Kapazität, Barrierefreiheit).",
+    "Berufskolleg-Campus auf dem Zanders-Areal zügig realisieren (Bildung & Handwerk stärken).",
+    "PV- und Effizienz-Offensive auf Kreisliegenschaften (Schulen, Verwaltung).",
+    "Jugendhilfe & Gesundheit präventiv und niedrigschwellig stärken.",
+    "Digitale Kreisverwaltung ausbauen – inkl. sinnvoller KI-Piloten im Bürgerservice.",
+    "Kreishaushalt: Schulden abbauen, aber Zukunftsprojekte priorisiert ermöglichen.",
+    "Sicherheit & Ordnung evidenzbasiert steuern – Fokus Schulweg- und Verkehrssicherheit.",
+    "Gewerbeflächen gezielt entwickeln, Natur-/Freiraumschutz mitdenken.",
+    "Klimaschutz & Anpassung als Querschnittsaufgabe im Kreis verankern."
+  ],
+  'Landrat': [
+    "Als Leiter der Kreispolizeibehörde Schulweg- & Verkehrssicherheit messbar verbessern.",
+    "Katastrophenschutz (Hochwasser/Unwetter): Ausstattung, Übungen, Alarmwege ausbauen.",
+    "Großprojekte (S11, KVB, Zanders-Campus) zentral koordinieren – feste Ansprechstelle im Kreishaus.",
+    "Digitale Verwaltung & KI-Nutzung offensiv, aber datenschutzsicher & transparent vorantreiben.",
+    "Energiewende im Kreis: PV auf Kreisgebäuden beschleunigen, Wärme-Konzepte starten.",
+    "Regelmäßige Bürgersprechstunden des Landrats fest etablieren.",
+    "Übergang Schule→Beruf stärken (Berufskollegs, Matching, Betriebe).",
+    "Kreishaushalt solide steuern – investieren, wo es langfristig Kosten spart.",
+    "Förderschulen & Berufskollegs als Schwerpunkt der nächsten Jahre priorisieren.",
+    "Erneuerbare Projekte fair ermöglichen – mit Rücksicht auf Anwohner & Natur."
+  ]
+};
+
+// ===== Kandidaten-/Parteiraster (-1, 0, +1) für Matching (vereinfachte Heuristik) =====
+var STANCE = {
+  "Bürgermeister": {
+    "Alexander Felsch (CDU/FDP)": [1,-1,1, 1,-1, 0, 1, 0, 1, 1],
+    "Marcel Kreutz (SPD/Grüne)" : [-1,1,1, 0, 1, 1, 1, 1, 0, 0],
+    "Aylin Aydogan (Linke)"     : [-1,1,1,-1, 1, 1, 0, 1, 0,-1],
+    "AfD-Kandidat"              : [1,-1,0, 1,-1,-1, 0,-1, 0, 1]
+  },
+  "Stadtrat": {
+    "CDU":             [1, 0,1, 0, 0, 1, 1, 0, 1, 0],
+    "FDP":             [1,-1,1, 0, 0, 1, 1,-1, 1, 0],
+    "SPD":             [1, 1,1, 1, 1, 0, 1, 1, 1, 1],
+    "Grüne":           [1, 1,1, 1, 1,-1, 1, 1, 1, 1],
+    "Linke":           [1, 1,0, 1, 1,-1, 1, 1, 1, 1],
+    "AfD":             [0,-1,0,-1,-1, 0,-1,-1,-1, 0],
+    "Volt":            [1, 1,1, 1, 1,-1, 1, 1, 1, 1],
+    "FWG/Freie Wähler":[1, 0,1, 0, 0, 1, 1, 0, 0, 0],
+    "Bürgerpartei GL": [1,-1,1,-1,-1, 1, 0,-1,-1, 0]
+  },
+  "Kreistag": {
+    "CDU":             [1, 1,1, 0, 0, 0, 1, 1, 1, 1],
+    "FDP":             [1, 1,1, 0, 0, 1, 1, 0, 1, 0],
+    "SPD":             [1, 1,1, 1, 1, 1, 0, 1, 0, 1],
+    "Grüne":           [1, 1,1, 1, 1, 1, 0, 1, 0, 1],
+    "Linke":           [0, 1,1, 1, 1, 0,-1, 0,-1, 1],
+    "AfD":             [-1,-1,-1,-1,-1,-1, 1,-1,-1,-1],
+    "Volt":            [1, 1,1, 1, 1, 1, 0, 1, 0, 1],
+    "FWG/Freie Wähler":[0, 0,0, 0, 0, 0, 1, 0, 0, 0],
+    "Bürgerpartei GL": [0, 0,0,-1, 0, 0, 1, 0, 0, 0]
+  },
+  "Landrat": {
+    "CDU":       [1, 1, 1, 0, 0, 0, 0, 1, 0, 0],
+    "SPD/Grüne": [0, 1, 1, 1, 1, 1, 1, 0, 1, 1]
+  }
+};
+
+// ===== Render der Thesen-Blöcke =====
+const appEl = document.getElementById('app');
+function renderBlock(name, theses){
+  const wrap = document.createElement('section');
+  wrap.className = 'card';
+  wrap.innerHTML = '<h2>'+name+' <span class="muted">'+(COLOR_LABELS[name]||'')+'</span></h2>';
+  theses.forEach((t, i) => {
+    const idx = i+1;
+    const id = name+'-'+idx;
+    const box = document.createElement('div');
+    box.className = 'thesis';
+    box.innerHTML = `
+      <div class="thesis-title">${idx}. ${t}</div>
+      <div class="controls">
+        <label class="pill agree"><input type="radio" name="${id}" value="1"><span> Zustimmung</span></label>
+        <label class="pill neutral"><input type="radio" name="${id}" value="0"><span> Neutral</span></label>
+        <label class="pill disagree"><input type="radio" name="${id}" value="-1"><span> Ablehnung</span></label>
+        <label class="pill emph"><input type="checkbox" id="${id}-x2"><span> doppelt wichtig</span></label>
+      </div>`;
+    wrap.appendChild(box);
+  });
+  appEl.appendChild(wrap);
+}
+Object.entries(THESES).forEach(([block, list]) => renderBlock(block, list));
+
+// ===== Auswahl-Highlight & Fortschritt =====
+const calcBtn = document.getElementById('calc');
+const progressNote = document.getElementById('progressNote');
+function updateProgress(){
+  const total = Object.values(THESES).reduce((n, arr)=>n+arr.length, 0);
+  const answered = document.querySelectorAll('input[type="radio"]:checked').length;
+  const pct = Math.round((answered/total)*100);
+  const progText = document.getElementById('progText');
+  const progBar = document.getElementById('progBar');
+  const progHint = document.getElementById('progHint');
+  if(progText) progText.textContent = 'Beantwortet: '+answered+'/'+total+' ('+pct+'%)';
+  if(progBar) progBar.style.width = Math.max(3, pct)+'%';
+  if(progHint) progHint.textContent = (answered < total/2) ? 'Beantworte mindestens 20 Fragen' : (answered<total ? 'Optional: alle Fragen beantworten' : 'Top! 100% erreicht');
+  calcBtn.disabled = answered < (total/2);
+  if(pct===100 && !window.__celebrated){
+    window.__celebrated = true;
+    const c = document.getElementById('celebrate');
+    if(c){ c.style.display='flex'; c.classList.add('show'); setTimeout(()=>{ c.style.display='none'; }, 4200); }
+  }
+  if(progressNote) progressNote.textContent = 'Beantwortet: '+answered+'/'+total+' ('+pct+'%)';
+}
+document.addEventListener('change', (e)=>{
+  const t = e.target;
+  if(t && t.type==='radio'){
+    const controls = t.closest('.controls');
+    const labels = controls.querySelectorAll('label.pill.agree, label.pill.neutral, label.pill.disagree');
+    labels.forEach(l=>{ l.classList.remove('selected','dim'); });
+    const selectedLabel = t.closest('label.pill');
+    selectedLabel.classList.add('selected');
+    labels.forEach(l=>{ if(l!==selectedLabel) l.classList.add('dim'); });
+    updateProgress();
+  }
+  if(t && t.type==='checkbox'){
+    const lab = t.closest('label.pill');
+    lab.classList.toggle('selected', t.checked);
+  }
+});
+updateProgress();
+// ===== Antworten lesen =====
+function readAnswers(){
+  const out = {};
+  for(const [block, list] of Object.entries(THESES)){
+    const vals = [];
+    list.forEach((_, i) => {
+      const id = `${block}-${i+1}`;
+      const sel = document.querySelector(`input[name="${id}"]:checked`);
+      let v = sel ? parseInt(sel.value,10) : 0;
+      const dblEl = document.getElementById(`${id}-x2`);
+      const dbl = dblEl && dblEl.checked;
+      if(dbl) v = v*2;
+      vals.push(v);
+    });
+    out[block] = vals;
+  }
+  return out;
+}
+
+// ===== Block-Scoring (-1/0/+1 mit doppelter Gewichtung) → % =====
+function scoreBlock(blockName, answers){
+  const st = STANCE[blockName] || {};
+  const N = answers.length;
+  const max = 2 * N; // max. Summe, wenn alle doppelt zustimmend/ablehnend exakt passen: 2 pro Frage
+  const res = {};
+  for(const [name, pos] of Object.entries(st)){
+    let s = 0;
+    for(let i=0;i<N;i++){ s += (answers[i]||0) * (pos[i]||0); }
+    const pct = ((s + max) / (2*max)) * 100; // normiert auf 0..100
+    res[name] = pct;
+  }
+  return res;
+}
+
+// ===== Gesamtrichtung für Parteien (Stadtrat+Kreistag) =====
+function weightedTotals(perBlock){
+  const partySet = new Set([
+    ...Object.keys(perBlock["Stadtrat"]||{}),
+    ...Object.keys(perBlock["Kreistag"]||{})
+  ]);
+  const partyScores = {};
+  partySet.forEach(p => {
+    const s = (WEIGHTS["Stadtrat"]*(perBlock["Stadtrat"][p]||0) + WEIGHTS["Kreistag"]*(perBlock["Kreistag"][p]||0)) / (WEIGHTS["Stadtrat"]+WEIGHTS["Kreistag"]);
+    partyScores[p] = s;
+  });
+  const sortObj = o => Object.entries(o).sort((a,b)=>b[1]-a[1]);
+  return {
+    mayor: sortObj(perBlock["Bürgermeister"]||{}),
+    parties: sortObj(partyScores),
+    landrat: sortObj(perBlock["Landrat"]||{})
+  };
+}
+
+// ===== Ergebnis-Balken =====
+function pctBar(label, value){
+  const wrap = document.createElement('div');
+  wrap.className = 'result';
+  wrap.innerHTML = `<div>${label}</div>
+    <div style="min-width:52%;flex:1;margin-left:12px" class="bar"><span style="width:${value.toFixed(1)}%"></span></div>
+    <div style="width:70px;text-align:right">${value.toFixed(1)}%</div>`;
+  return wrap;
+}
+
+// ===== AfD-Hinweis (neutral) wenn AfD ganz oben landet =====
+function showAfdWarning(perBlock){
+  const warnEl = document.getElementById('afdWarn');
+  warnEl.innerHTML = "";
+  const topMayor = Object.entries(perBlock["Bürgermeister"]||{}).sort((a,b)=>b[1]-a[1])[0];
+  const topParties = weightedTotals(perBlock).parties[0];
+  const show = (topMayor && topMayor[0] && topMayor[0].includes("AfD")) || (topParties && topParties[0]==="AfD");
+  if(show){
+    const box = document.createElement('div');
+    box.className = 'card';
+    box.style.marginBottom = "12px";
+    box.style.borderColor = "#f1d0d0";
+    box.style.background = "#fff5f5";
+    box.style.color = "#6b2b2b";
+    box.style.fontSize = "13px";
+    box.style.lineHeight = "1.5";
+    box.innerHTML = "<b>Hinweis:</b> Das Bundesamt für Verfassungsschutz führt die AfD als <i>rechtsextremistischen Verdachtsfall</i>. Gerichtliche Entscheidungen (OVG Münster 2024; BVerwG 2025) bestätigten die Einstufung bzw. deren Bekanntgabe. Diese Information dient der Einordnung.";
+    warnEl.appendChild(box);
+  }
+}
+
+// ===== Auswerten-Button =====
+function calculate(){
+  const total = Object.values(THESES).reduce((n, arr)=>n+arr.length, 0);
+  const answered = document.querySelectorAll('input[type="radio"]:checked').length;
+  const answers = readAnswers();
+
+  const resultsEl = document.getElementById('results');
+  resultsEl.innerHTML = "";
+
+  if(answered < total){
+    const missing = total - answered;
+    document.getElementById('progressNote').innerHTML = `⚠️ Du hast noch <b>${missing}</b> von <b>${total}</b> Fragen nicht beantwortet. Das Ergebnis ist daher <b>ungenauer</b>.`;
+  } else {
+    document.getElementById('progressNote').textContent = "Alle Fragen beantwortet. Ergebnis ist maximal aussagekräftig.";
+  }
+
+  const perBlock = {};
+  for(const block of Object.keys(THESES)){ perBlock[block] = scoreBlock(block, answers[block]); }
+
+  showAfdWarning(perBlock);
+
+  for(const block of Object.keys(THESES)){
+    const h = document.createElement('div');
+    h.innerHTML = `<h3 style="margin:12px 0 6px">${block} <span class="muted">${COLOR_LABELS[block]||""}</span></h3>`;
+    resultsEl.appendChild(h);
+    const items = Object.entries(perBlock[block]).sort((a,b)=>b[1]-a[1]);
+    items.forEach(([name, val]) => resultsEl.appendChild(pctBar(name, val)));
+  }
+
+  const comb = weightedTotals(perBlock);
+  const sep = document.createElement('div');
+  sep.innerHTML = `<h3 style="margin:16px 0 8px">Gesamtrichtung</h3>`;
+  resultsEl.appendChild(sep);
+
+  const sub1 = document.createElement('div');
+  sub1.innerHTML = `<p class="muted">Bürgermeister (Top-Fit)</p>`;
+  resultsEl.appendChild(sub1);
+  comb.mayor.slice(0,3).forEach(([name,val]) => resultsEl.appendChild(pctBar(name,val)));
+
+  const sub2 = document.createElement('div');
+  sub2.innerHTML = `<p class="muted">Parteien gesamt (Stadtrat+Kreistag)</p>`;
+  resultsEl.appendChild(sub2);
+  comb.parties.slice(0,5).forEach(([name,val]) => resultsEl.appendChild(pctBar(name,val)));
+
+  const sub3 = document.createElement('div');
+  sub3.innerHTML = `<p class="muted">Landrat (Top-Fit)</p>`;
+  resultsEl.appendChild(sub3);
+  comb.landrat.slice(0,3).forEach(([name,val]) => resultsEl.appendChild(pctBar(name,val)));
+}
+
+document.getElementById('calc').addEventListener('click', calculate);
+
+// ===== Reset =====
+document.getElementById('reset').addEventListener('click', () => {
+  document.querySelectorAll('input[type="radio"]').forEach(el => el.checked=false);
+  document.querySelectorAll('input[type="checkbox"]').forEach(el => el.checked=false);
+  document.querySelectorAll('label.pill').forEach(el => el.classList.remove('selected','dim'));
+  document.getElementById('results').innerHTML="";
+  document.getElementById('afdWarn').innerHTML="";
+  document.getElementById('progressNote').textContent="";
+  updateProgress();
+});
+</script>
+</body>
+</html>
+
