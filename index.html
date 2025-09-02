@@ -3,7 +3,8 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-<title>Lokaler Wahlhelfer – Bergisch Gladbach 2025 </title>
+<title>Lokaler Wahlhelfer – Bergisch Gladbach 2025</title>
+<meta name="description" content="Privates Info-Tool mit 32 Thesen (Bürgermeister, Stadtrat, Kreistag, Landrat) für die Kommunalwahl 2025 in Bergisch Gladbach. Keine offizielle Seite.">
 <style>
   :root{
     --bg:#f8f9fa; --fg:#2b2b2b; --card:#ffffff; --card-border:#dee3eb; --shadow:0 4px 14px rgba(0,0,0,.08);
@@ -30,6 +31,7 @@
   h1{margin:0 0 6px;font-weight:800;font-size:22px;color:var(--heading)}
   @media(min-width:768px){h1{font-size:28px}}
   p.lead{margin:0;color:var(--muted);font-size:14px}
+
   .progress-wrap{position:sticky;top:0;z-index:9;background:var(--bg);padding:8px 12px;border-bottom:1px solid var(--card-border)}
   .progress{height:12px;background:var(--bar-bg);border-radius:999px;overflow:hidden;box-shadow:inset 0 1px 2px rgba(0,0,0,.06)}
   .progress>span{display:block;height:100%;width:0%;background:linear-gradient(90deg,var(--accent1),var(--accent2));transition:width .35s ease}
@@ -65,24 +67,29 @@
   .pill.selected::before{content:"✓"; display:flex; align-items:center; justify-content:center; font-weight:900; font-size:14px; color:#000; background:#fff; border-color:#000}
   .pill.dim{opacity:.45; filter:grayscale(.4)}
   .pill.emph.selected{ background: var(--agree); border-color: var(--agree-b); color: var(--agree-t); }
+
   .result{display:flex;align-items:center;justify-content:space-between;padding:10px 12px;border-radius:12px;background:#eef3f9;border:1px solid var(--card-border);margin:6px 0}
   [data-theme="dark"] .result{background:#152033}
   .bar{height:10px;background:var(--bar-bg);border-radius:8px;overflow:hidden}
   .bar>span{display:block;height:100%;background:linear-gradient(90deg,var(--accent1),var(--accent2));width:0%}
+
   .muted{color:var(--muted)}
   button{padding:10px 14px;border-radius:12px;border:1px solid #5aa6d6;background:linear-gradient(135deg,var(--accent1),var(--accent2));color:#fff;cursor:pointer;font-weight:800;letter-spacing:.2px}
   button:disabled{opacity:.45;cursor:not-allowed;filter:grayscale(.2)}
-footer { background: var(--bg);
-  border-top: 1px solid var(--card-border);
-  padding: 14px 12px;
-  font-size: 12px;
-  color: var(--muted);
-  display: flex;
-  flex-direction: column;
-  align-items: center;   /* zentriert horizontal */
-  text-align: center;    /* zentriert Text */
-  gap: 6px;
-  margin-top: 24px;}
+
+  footer{ 
+    background: var(--bg);
+    border-top: 1px solid var(--card-border);
+    padding: 14px 12px;
+    font-size: 12px;
+    color: var(--muted);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 6px;
+    margin-top: 24px;
+  }
 
   .celebrate{position:fixed;left:50%;transform:translateX(-50%);top:-80px;background:#fffbe6;color:#5c4a14;border:1px solid #ffe599;border-radius:12px;padding:10px 14px;box-shadow:0 6px 20px rgba(0,0,0,.15);font-weight:700;display:flex;align-items:center;gap:8px}
   [data-theme="dark"] .celebrate{background:#3a2d10;color:#ffe3a2;border-color:#6a5522}
@@ -94,18 +101,18 @@ footer { background: var(--bg);
 <body>
 <div id="celebrate" class="celebrate" style="display:none">
   <div style="width:18px;height:18px;border-radius:50%;background:radial-gradient(rgba(255,215,0,.7), rgba(255,215,0,0) 60%);"></div>
-  <div>Alle 40 beantwortet! 🎉 Du kannst jetzt auswerten.</div>
+  <div>Alle beantwortet! 🎉 Du kannst jetzt auswerten.</div>
 </div>
 
 <header>
   <h1>Lokaler Wahlhelfer – Bergisch Gladbach 2025</h1>
-  <p class="lead">Offline • 40 Thesen • Gewichtung: Bürgermeister 40%, Stadtrat 30%, Kreistag 20%, Landrat 10% • <b>Version 1.17</b></p>
+  <p class="lead">32 Thesen • Gewichtung: Bürgermeister 40%, Stadtrat 30%, Kreistag 20%, Landrat 10% • <b>Version 1.19</b></p>
 </header>
 
 <div class="progress-wrap">
   <div class="progress-info">
-    <span id="progText">Beantwortet: 0/40 (0%)</span>
-    <span id="progHint">Beantworte mindestens 20 Fragen</span>
+    <span id="progText">Beantwortet: 0/32 (0%)</span>
+    <span id="progHint">Beantworte mindestens 16 Fragen</span>
   </div>
   <div class="progress"><span id="progBar"></span></div>
 </div>
@@ -113,7 +120,7 @@ footer { background: var(--bg);
 <main>
   <section class="card">
     <h2>Willkommen!</h2>
-    <p>Dieses Tool hilft dir, deine Stimmen zur Kommunalwahl in Bergisch Gladbach zu orientieren. Es basiert auf <b>40 Thesen</b> (je 10 zu <i>Bürgermeister</i>, <i>Stadtrat</i>, <i>Kreistag</i>, <i>Landrat</i>). Die Gewichtung orientiert sich an der lokalen Wirkung: <b>40 %</b> Bürgermeister, <b>30 %</b> Stadtrat, <b>20 %</b> Kreistag, <b>10 %</b> Landrat.</p>
+    <p>Dieses private Tool bietet eine <b>grobe Orientierung</b> zur Kommunalwahl in Bergisch Gladbach 2025. Grundlage sind <b>32 Thesen</b> (10 zu <i>Bürgermeister</i>, 10 zu <i>Stadtrat</i>, 6 zu <i>Kreistag</i>, 6 zu <i>Landrat</i>), die du mit Zustimmung/Neutral/Ablehnung und optional „doppelt wichtig“ bewerten kannst.</p>
     <div class="legend">
       <span class="chip blue">Bürgermeister = blauer Zettel</span>
       <span class="chip green">Stadtrat = grüner Zettel</span>
@@ -132,7 +139,6 @@ footer { background: var(--bg);
     </div>
   </section>
 
-  <!-- Hier werden die 4 Blöcke mit je 10 Thesen gerendert -->
   <div id="app"></div>
 
   <section class="card">
@@ -149,13 +155,9 @@ footer { background: var(--bg);
   <section class="card" style="background:#f7f9fc; border-color:#dbe4f0; color:#334155; margin-top:16px">
     <h2 style="margin-top:0">Disclaimer</h2>
     <div style="font-size:14px; line-height:1.6">
-      <p>Dieses Tool ist ein rein privates Projekt zur politischen Information.<br/>
-      Es handelt sich nicht um ein offizielles Angebot der Bundeszentrale für politische Bildung, staatlicher Stellen oder politischer Parteien.</p>
-      <p>Die dargestellten Ergebnisse dienen ausschließlich der Orientierung.<br/>
-      Es wird keine Garantie für Richtigkeit, Vollständigkeit oder Aktualität übernommen.</p>
-      <p>Es werden keinerlei personenbezogene Daten gespeichert oder ausgewertet.</p>
-      <p>Eine Haftung für eventuelle Schäden oder Konsequenzen, die aus der Nutzung dieses Tools entstehen, ist ausgeschlossen.</p>
-      <p>Die Gewichtungen und Auswertungen basieren auf einer privaten Einschätzung und stellen keine Wahlempfehlung dar. Jede Nutzerin und jeder Nutzer ist aufgefordert, sich eigenständig über Parteien und Programme zu informieren.</p>
+      <p>Dieses Tool ist ein rein privates Projekt zur politischen Information. Es handelt sich nicht um ein offizielles Angebot der Bundeszentrale für politische Bildung, staatlicher Stellen oder politischer Parteien.</p>
+      <p>Die dargestellten Ergebnisse dienen ausschließlich der Orientierung. Es wird keine Garantie für Richtigkeit, Vollständigkeit oder Aktualität übernommen. Es werden keinerlei personenbezogene Daten gespeichert oder ausgewertet.</p>
+      <p>Eine Haftung für eventuelle Schäden oder Konsequenzen, die aus der Nutzung dieses Tools entstehen, ist ausgeschlossen. Die Gewichtungen/Auswertungen basieren auf einer privaten Einschätzung und stellen keine Wahlempfehlung dar. Bitte informiere dich zusätzlich aus offiziellen Quellen.</p>
     </div>
     <div style="margin-top:12px; font-size:12px; opacity:.9"><strong>Impressum:</strong> Florian Körner · Immanuel-Kant-Straße 3 · 51427 Bergisch Gladbach</div>
   </section>
@@ -164,10 +166,9 @@ footer { background: var(--bg);
 <footer>
   <div>Lokaler Wahlhelfer – Bergisch Gladbach 2025 · <b>Version 1.19</b></div>
   <div>Erstellt von <b>Florian Körner</b> · mit Unterstützung durch <b>KI</b></div>
-  <div>Teilen: Datei am besten per E-Mail oder Cloud (WhatsApp blockiert HTML/ZIP)</div>
+  <div>Teilen: Link weitergeben; bei Fragen gern Feedback an mich.</div>
   <div class="muted">© 2025</div>
 </footer>
-
 
 <script>
 // ===== Theme handling: PC startet hell, Handy auto; Nutzerwahl wird gemerkt =====
@@ -178,105 +179,125 @@ footer { background: var(--bg);
   (function init(){
     var saved=null; try{saved=localStorage.getItem('wahlhelfer-theme');}catch(e){}
     var mode = saved || (isMobile() ? 'auto' : 'light');
-    if(sel) sel.value = mode;
-    applyTheme(mode);
+    if(sel) sel.value = mode; applyTheme(mode);
   })();
   if(sel) sel.addEventListener('change', function(e){ applyTheme(e.target.value); });
 })();
 
-// ===== Gewichtung & Zettel-Farben =====
+// ===== Gewichtung & Labels =====
 var WEIGHTS = { 'Bürgermeister':0.40, 'Stadtrat':0.30, 'Kreistag':0.20, 'Landrat':0.10 };
 var COLOR_LABELS = { 'Bürgermeister':'(blauer Zettel)','Stadtrat':'(grüner Zettel)','Kreistag':'(weißer Zettel)','Landrat':'(rosa Zettel)' };
 
-// ===== 40 Thesen (10 je Block) =====
+// ===== 32 Thesen – für ganz Bergisch Gladbach =====
 const THESES = {
   'Bürgermeister': [
-    "Schulen zuerst: kurzfristige Sanierungs- und Ausstattungsbudgets je Schule einführen (unkomplizierte, pauschale Mittel).",
-    "Zanders-Areal zügig entwickeln – mit gemischter Nutzung (Arbeit/Bildung/Wohnen) statt Aufschub.",
-    "Bildungs-Campus / Exzellenz-Baustein auf dem Zanders-Areal priorisieren und eng mit dem Kreis koordinieren.",
-    "Laufende Straßen-/Gehwegsanierungen vorziehen, neue Projekte nachrangig starten.",
-    "Schulwegsicherheit & Radverkehr deutlich stärken – auch wenn dafür Parkplätze entfallen.",
-    "Bezahlbarer Wohnraum: verbindliche Sozialwohnungs-Quoten bei größeren Neubauten festlegen.",
-    "Pendlerverkehr verbessern: S-Bahn/KVB-Angebote aktiv unterstützen und städtische Baustellen koordiniert steuern.",
-    "Klimaresilienz als Standard (Schwammstadt, Hitzeschutz, Entsiegelung) in allen Bauprojekten verankern.",
-    "Verwaltung spürbar beschleunigen (klare Fristen, 100-Tage-Maßnahmen, mehr digitale Services).",
-    "Solide Finanzen sichern – aber zentrale Zukunftsinvestitionen (Schule, Mobilität, Digitalisierung) ermöglichen."
+    "Schulen: Ein städtischer Sanierungsfonds soll jeder Schule ein fixes Jahresbudget für kleinere Maßnahmen geben (ohne lange Anträge).",
+    "Zanders-Areal: Der Startschuss soll binnen 12 Monaten mit klaren Bauabschnitten fallen – auch wenn dafür Interimslösungen nötig sind.",
+    "Verwaltung: Für Baugenehmigungen, Kita-Plätze und Bürgeranliegen werden verbindliche Service-Fristen (z. B. 30/60 Tage) eingeführt.",
+    "Straßen/Gehwege: Erst den Instandhaltungsstau gezielt abbauen, neue Ausbauten nur nachrangig starten.",
+    "Schulwegsicherheit: Querungen, Beleuchtung, Temporegeln und Kontrollen werden an definierten Hotspots priorisiert umgesetzt.",
+    "Parkraummanagement: Bewohner- und Handwerkerparken erhalten Vorrang; Parkgebühren können zur Lenkung moderat steigen.",
+    "Radverkehr: Durchgehende, sichere Hauptachsen werden auch dann realisiert, wenn einzelne Parkplätze entfallen.",
+    "Klimaanpassung: Bei städtischen Projekten gelten Schwammstadt-Standards (Entsiegelung, Bäume, Retention) verbindlich.",
+    "Haushalt: Mehr Investitionen in Schulen/Digitales sind vertretbar, andere Ausgaben sollen dafür spürbar gedrosselt werden.",
+    "Beteiligung: Ein fester Bürgerbeteiligungsplan (online/offline) soll große Projekte verpflichtend begleiten."
   ],
   'Stadtrat': [
-    "OGS-Ausbau (Plätze, Räume, Personal) priorisieren – v. a. in Refrath/Bensberg.",
-    "Für schnellere Schulsanierungen sind zeitweise höhere Kredite/Abgaben vertretbar.",
-    "Das Programm 2025–2027 zur Sanierung von Straßen & Radwegen konsequent abarbeiten.",
-    "Zuerst Nachverdichtung & Umnutzung, bevor neue Flächen versiegelt werden.",
-    "Sozialwohnraum verbindlich in neue Quartiere integrieren – fair über Stadtteile verteilt.",
-    "Parkraummanagement sozialverträglich gestalten (Digitallösungen plus analoge/Bar-Optionen).",
-    "Vereine, Sport & Jugendarbeit verlässlich fördern (Sanierungen, Belegungszeiten, Ehrenamt).",
-    "Hitze-/Starkregenvorsorge (Straßenbäume, Entsiegelung, Retentionsflächen) höher gewichten als neue Straßen.",
-    "Digitale Verwaltung & Schulen (Terminbuchung, Online-Anträge, Infoboards) flächig ausrollen.",
-    "Sachkoalitionen statt Lagerdenken: je Thema mit den besten Lösungen zusammenarbeiten."
+    "OGS-Ausbau: Schulen in ganz Bergisch Gladbach sollen priorisiert zusätzliche Räume und Personal erhalten – auch mit Übergangslösungen.",
+    "Bauen im Bestand: Nachverdichtung/Umnutzung vor Neuversiegelung – mit klaren Höchstwerten pro Stadtteil.",
+    "Geflüchtete: Dezentral unterbringen und Integration (Sprache/Arbeit) aktiv fördern – auch bei höheren Kosten.",
+    "Vereine/Jugend: Mehrjahres-Förderverträge statt jährlicher Einzelanträge für Planungssicherheit.",
+    "Digitale Stadt: Standardisierte Online-Anträge, Status-Tracking und Infoscreens in städtischen Einrichtungen.",
+    "Parkraum: Zonen & Gebühren so gestalten, dass Handel, Bewohner und Kurzzeitparken parallel möglich bleiben.",
+    "Grün im Bestand: Straßenbaum-Programm & Entsiegelung bei jeder Straßensanierung verpflichtend mitplanen.",
+    "Barrierefreiheit: Gehwege, Querungen und Haltestellen in der gesamten Stadt systematisch barrierearm umbauen.",
+    "Transparenz: Ratsbeschlüsse, Gutachten und Daten in einem zentralen, leicht nutzbaren Portal veröffentlichen.",
+    "Sachkoalitionen: Themenbezogene Mehrheiten sind ausdrücklich erwünscht – statt starrer Parteiblöcke."
   ],
   'Kreistag': [
-    "S11: zweigleisiger Ausbau & dichterer Takt – mit verlässlichem Ersatzverkehr bei Sperrungen.",
-    "VRS/KVB-Angebote Richtung Köln/Bensberg verbessern (Takt, Kapazität, Barrierefreiheit).",
-    "Berufskolleg-Campus auf dem Zanders-Areal zügig realisieren (Bildung & Handwerk stärken).",
-    "PV- und Effizienz-Offensive auf Kreisliegenschaften (Schulen, Verwaltung).",
-    "Jugendhilfe & Gesundheit präventiv und niedrigschwellig stärken.",
-    "Digitale Kreisverwaltung ausbauen – inkl. sinnvoller KI-Piloten im Bürgerservice.",
-    "Kreishaushalt: Schulden abbauen, aber Zukunftsprojekte priorisiert ermöglichen.",
-    "Sicherheit & Ordnung evidenzbasiert steuern – Fokus Schulweg- und Verkehrssicherheit.",
-    "Gewerbeflächen gezielt entwickeln, Natur-/Freiraumschutz mitdenken.",
-    "Klimaschutz & Anpassung als Querschnittsaufgabe im Kreis verankern."
+    "S11: Zweigleisigkeit/Taktverdichtung vorantreiben; bei Sperrungen verbindliche Ersatzverkehre mit Taktgarantie.",
+    "GL↔Köln: Bus-/KVB-Angebote dichter und barrierefrei ausbauen (inkl. Echtzeitinfos & Takt am Abend).",
+    "Berufskolleg am Zanders-Campus: Praxis, Werkstätten und duale Angebote schnell aufbauen.",
+    "Kreisliegenschaften: Photovoltaik & Energieeffizienz standardmäßig prüfen und zügig umsetzen.",
+    "Gesundheit/Pflege: Kapazitäten und Erreichbarkeit in der Fläche verbessern – inkl. Pflegeberatung.",
+    "Ausländerbehörde: Verfahren beschleunigen; gesetzliche Rückführungen strikt umsetzen; Integration bei Bleibeperspektive fokussieren."
   ],
   'Landrat': [
-    "Als Leiter der Kreispolizeibehörde Schulweg- & Verkehrssicherheit messbar verbessern.",
-    "Katastrophenschutz (Hochwasser/Unwetter): Ausstattung, Übungen, Alarmwege ausbauen.",
-    "Großprojekte (S11, KVB, Zanders-Campus) zentral koordinieren – feste Ansprechstelle im Kreishaus.",
-    "Digitale Verwaltung & KI-Nutzung offensiv, aber datenschutzsicher & transparent vorantreiben.",
-    "Energiewende im Kreis: PV auf Kreisgebäuden beschleunigen, Wärme-Konzepte starten.",
-    "Regelmäßige Bürgersprechstunden des Landrats fest etablieren.",
-    "Übergang Schule→Beruf stärken (Berufskollegs, Matching, Betriebe).",
-    "Kreishaushalt solide steuern – investieren, wo es langfristig Kosten spart.",
-    "Förderschulen & Berufskollegs als Schwerpunkt der nächsten Jahre priorisieren.",
-    "Erneuerbare Projekte fair ermöglichen – mit Rücksicht auf Anwohner & Natur."
+    "Katastrophenschutz: Ausstattung, Übungen und Warnketten für Hochwasser/Unwetter deutlich ausbauen.",
+    "Polizei: Messbar mehr Schulweg-/Verkehrssicherheit als Schwerpunkt der Kreispolizeibehörde.",
+    "Großprojekte: S11, KVB und Zanders-Campus zentral koordinieren – eine ansprechbare Stelle mit klaren Timelines.",
+    "Energiewende: PV-Beschleuniger & kommunale Wärme-Roadmaps für den Kreis organisieren.",
+    "Pflege/Reha: Kapazitäten, Wegezeiten und Beratung verbessern.",
+    "Bürgernähe: Regelmäßige Sprechstunden des Landrats in allen Kommunen."
   ]
 };
 
-// ===== Kandidaten-/Parteiraster (-1, 0, +1) für Matching (vereinfachte Heuristik) =====
+// ===== Kandidaten/Parteien – STANCE (-1/0/+1 je Frage) =====
+// Längen: BM=10, SR=10, KT=6, LR=6
 var STANCE = {
   "Bürgermeister": {
-    "Alexander Felsch (CDU/FDP)": [1,-1,1, 1,-1, 0, 1, 0, 1, 1],
-    "Marcel Kreutz (SPD/Grüne)" : [-1,1,1, 0, 1, 1, 1, 1, 0, 0],
-    "Aylin Aydogan (Linke)"     : [-1,1,1,-1, 1, 1, 0, 1, 0,-1],
-    "AfD-Kandidat"              : [1,-1,0, 1,-1,-1, 0,-1, 0, 1]
+    "Alexander Felsch (CDU/FDP)"     : [ 1,-1, 1, 1,-1, 0, 1, 0, 1, 1],
+    "Marcel Kreutz (SPD/Grüne)"      : [-1, 1, 1, 0, 1, 1, 1, 1, 0, 0],
+    "Günther Schöpf (AfD)"           : [ 1,-1, 0, 1,-1,-1, 0,-1, 0, 1],
+    "Thomas Klein (Bürgerpartei GL)" : [ 1, 0, 0, 1, 0, 1, 0, 0, 1, 1],
+    "Aylin Aydogan (Linke)"          : [-1, 1, 1,-1, 1, 1, 0, 1, 0,-1],
+    "Alexander Becker (Volt)"        : [ 0, 1, 1, 0, 1, 0, 1, 1, 1, 0]
   },
   "Stadtrat": {
-    "CDU":             [1, 0,1, 0, 0, 1, 1, 0, 1, 0],
-    "FDP":             [1,-1,1, 0, 0, 1, 1,-1, 1, 0],
-    "SPD":             [1, 1,1, 1, 1, 0, 1, 1, 1, 1],
-    "Grüne":           [1, 1,1, 1, 1,-1, 1, 1, 1, 1],
-    "Linke":           [1, 1,0, 1, 1,-1, 1, 1, 1, 1],
-    "AfD":             [0,-1,0,-1,-1, 0,-1,-1,-1, 0],
-    "Volt":            [1, 1,1, 1, 1,-1, 1, 1, 1, 1],
-    "FWG/Freie Wähler":[1, 0,1, 0, 0, 1, 1, 0, 0, 0],
-    "Bürgerpartei GL": [1,-1,1,-1,-1, 1, 0,-1,-1, 0]
+    "CDU":             [ 1, 1, 0, 1, 1, 1, 1, 0, 1, 0],
+    "FDP":             [ 1, 1,-1, 0, 1, 1, 1, 0, 1, 0],
+    "SPD":             [ 1, 1, 1, 1, 1, 0, 1, 1, 1, 1],
+    "Grüne":           [ 1, 1, 1, 1, 1,-1, 1, 1, 1, 1],
+    "Linke":           [ 1, 0, 1, 1, 1,-1, 1, 1, 1, 1],
+    "AfD":             [ 0,-1,-1,-1,-1, 0,-1,-1,-1, 0],
+    "Volt":            [ 1, 1, 1, 1, 1,-1, 1, 1, 1, 1],
+    "FWG/Freie Wähler":[ 1, 1, 0, 0, 0, 1, 1, 0, 0, 0],
+    "Bürgerpartei GL": [ 1, 1, 0,-1, 0, 1, 0, 0,-1, 0]
   },
   "Kreistag": {
-    "CDU":             [1, 1,1, 0, 0, 0, 1, 1, 1, 1],
-    "FDP":             [1, 1,1, 0, 0, 1, 1, 0, 1, 0],
-    "SPD":             [1, 1,1, 1, 1, 1, 0, 1, 0, 1],
-    "Grüne":           [1, 1,1, 1, 1, 1, 0, 1, 0, 1],
-    "Linke":           [0, 1,1, 1, 1, 0,-1, 0,-1, 1],
-    "AfD":             [-1,-1,-1,-1,-1,-1, 1,-1,-1,-1],
-    "Volt":            [1, 1,1, 1, 1, 1, 0, 1, 0, 1],
-    "FWG/Freie Wähler":[0, 0,0, 0, 0, 0, 1, 0, 0, 0],
-    "Bürgerpartei GL": [0, 0,0,-1, 0, 0, 1, 0, 0, 0]
+    "CDU":             [ 1, 1, 1, 0, 1, 1],
+    "FDP":             [ 1, 1, 1, 0, 1, 1],
+    "SPD":             [ 1, 1, 1, 1, 1, 0],
+    "Grüne":           [ 1, 1, 1, 1, 1, 0],
+    "Linke":           [ 0, 1, 1, 1, 1,-1],
+    "AfD":             [-1, 0,-1,-1, 0, 1],
+    "Volt":            [ 1, 1, 1, 1, 1, 0],
+    "FWG/Freie Wähler":[ 0, 0, 0, 0, 1, 1],
+    "Bürgerpartei GL": [ 0, 0, 0, 0, 1, 1]
   },
   "Landrat": {
-    "CDU":       [1, 1, 1, 0, 0, 0, 0, 1, 0, 0],
-    "SPD/Grüne": [0, 1, 1, 1, 1, 1, 1, 0, 1, 1]
+    "CDU":       [ 1, 1, 1, 0, 1, 0],
+    "SPD/Grüne": [ 1, 1, 1, 1, 1, 1]
   }
 };
 
-// ===== Render der Thesen-Blöcke =====
+// ===== Achsen-Mapping (je Frage genau 1 Achse) =====
+const AXES = {
+  'Bürgermeister': [
+    'bildung','wirtschaft','verwaltung','mobilitaet','sicherheit',
+    'wohnen','mobilitaet','klima','finanzen','beteiligung'
+  ],
+  'Stadtrat': [
+    'bildung','wohnen','soziales','soziales','verwaltung',
+    'mobilitaet','klima','mobilitaet','verwaltung','beteiligung'
+  ],
+  'Kreistag': [
+    'mobilitaet','mobilitaet','bildung','klima','soziales','verwaltung'
+  ],
+  'Landrat': [
+    'sicherheit','sicherheit','verwaltung','klima','soziales','beteiligung'
+  ]
+};
+
+// ===== Kopplungsgewichte (sanft) =====
+const COUPLE = {
+  'Bürgermeister': {'Stadtrat':0.20,'Kreistag':0.10,'Landrat':0.05},
+  'Stadtrat':      {'Bürgermeister':0.20,'Kreistag':0.10},
+  'Kreistag':      {'Bürgermeister':0.10,'Stadtrat':0.10,'Landrat':0.05},
+  'Landrat':       {'Kreistag':0.10}
+};
+
+// ===== UI: Blöcke rendern =====
 const appEl = document.getElementById('app');
 function renderBlock(name, theses){
   const wrap = document.createElement('section');
@@ -305,7 +326,7 @@ Object.entries(THESES).forEach(([block, list]) => renderBlock(block, list));
 const calcBtn = document.getElementById('calc');
 const progressNote = document.getElementById('progressNote');
 function updateProgress(){
-  const total = Object.values(THESES).reduce((n, arr)=>n+arr.length, 0);
+  const total = Object.values(THESES).reduce((n, arr)=>n+arr.length, 0); // 32
   const answered = document.querySelectorAll('input[type="radio"]:checked').length;
   const pct = Math.round((answered/total)*100);
   const progText = document.getElementById('progText');
@@ -313,7 +334,7 @@ function updateProgress(){
   const progHint = document.getElementById('progHint');
   if(progText) progText.textContent = 'Beantwortet: '+answered+'/'+total+' ('+pct+'%)';
   if(progBar) progBar.style.width = Math.max(3, pct)+'%';
-  if(progHint) progHint.textContent = (answered < total/2) ? 'Beantworte mindestens 20 Fragen' : (answered<total ? 'Optional: alle Fragen beantworten' : 'Top! 100% erreicht');
+  if(progHint) progHint.textContent = (answered < total/2) ? 'Beantworte mindestens 16 Fragen' : (answered<total ? 'Optional: alle Fragen beantworten' : 'Top! 100% erreicht');
   calcBtn.disabled = answered < (total/2);
   if(pct===100 && !window.__celebrated){
     window.__celebrated = true;
@@ -334,11 +355,11 @@ document.addEventListener('change', (e)=>{
     updateProgress();
   }
   if(t && t.type==='checkbox'){
-    const lab = t.closest('label.pill');
-    lab.classList.toggle('selected', t.checked);
+    const lab = t.closest('label.pill'); lab.classList.toggle('selected', t.checked);
   }
 });
 updateProgress();
+
 // ===== Antworten lesen =====
 function readAnswers(){
   const out = {};
@@ -349,8 +370,7 @@ function readAnswers(){
       const sel = document.querySelector(`input[name="${id}"]:checked`);
       let v = sel ? parseInt(sel.value,10) : 0;
       const dblEl = document.getElementById(`${id}-x2`);
-      const dbl = dblEl && dblEl.checked;
-      if(dbl) v = v*2;
+      if(dblEl && dblEl.checked) v = v*2; // -2..+2
       vals.push(v);
     });
     out[block] = vals;
@@ -358,57 +378,80 @@ function readAnswers(){
   return out;
 }
 
-// ===== Block-Scoring (-1/0/+1 mit doppelter Gewichtung) → % =====
+// ===== Block-Scoring (Entities + Achsen) =====
 function scoreBlock(blockName, answers){
   const st = STANCE[blockName] || {};
   const N = answers.length;
-  const max = 2 * N; // max. Summe, wenn alle doppelt zustimmend/ablehnend exakt passen: 2 pro Frage
+  const max = 2 * N;
   const res = {};
+  const axisVals = {};
+
+  // Entity-Scores
   for(const [name, pos] of Object.entries(st)){
     let s = 0;
     for(let i=0;i<N;i++){ s += (answers[i]||0) * (pos[i]||0); }
-    const pct = ((s + max) / (2*max)) * 100; // normiert auf 0..100
+    const pct = ((s + max) / (2*max)) * 100;
     res[name] = pct;
   }
-  return res;
+  // Achsen
+  for(let i=0;i<N;i++){
+    const axis = AXES[blockName][i];
+    if(!axisVals[axis]) axisVals[axis] = {sum:0, cnt:0};
+    axisVals[axis].sum += (answers[i]||0);
+    axisVals[axis].cnt += 1;
+  }
+  const axesOut = {};
+  for(const [axis,{sum,cnt}] of Object.entries(axisVals)){
+    const maxAxis = 2*cnt;
+    axesOut[axis] = ((sum + maxAxis) / (2*maxAxis)) * 100; // 0..100
+  }
+  return { entities: res, axes: axesOut };
 }
 
-// ===== Gesamtrichtung für Parteien (Stadtrat+Kreistag) =====
-function weightedTotals(perBlock){
-  const partySet = new Set([
-    ...Object.keys(perBlock["Stadtrat"]||{}),
-    ...Object.keys(perBlock["Kreistag"]||{})
-  ]);
-  const partyScores = {};
-  partySet.forEach(p => {
-    const s = (WEIGHTS["Stadtrat"]*(perBlock["Stadtrat"][p]||0) + WEIGHTS["Kreistag"]*(perBlock["Kreistag"][p]||0)) / (WEIGHTS["Stadtrat"]+WEIGHTS["Kreistag"]);
-    partyScores[p] = s;
-  });
-  const sortObj = o => Object.entries(o).sort((a,b)=>b[1]-a[1]);
-  return {
-    mayor: sortObj(perBlock["Bürgermeister"]||{}),
-    parties: sortObj(partyScores),
-    landrat: sortObj(perBlock["Landrat"]||{})
-  };
-}
-
-// ===== Ergebnis-Balken =====
-function pctBar(label, value){
-  const wrap = document.createElement('div');
-  wrap.className = 'result';
-  wrap.innerHTML = `<div>${label}</div>
-    <div style="min-width:52%;flex:1;margin-left:12px" class="bar"><span style="width:${value.toFixed(1)}%"></span></div>
-    <div style="width:70px;text-align:right">${value.toFixed(1)}%</div>`;
-  return wrap;
+// ===== Kopplung anwenden =====
+function blendBlocks(perBlock){
+  const blocks = Object.keys(perBlock);
+  const mixedAxes = {};
+  for(const A of blocks){
+    mixedAxes[A] = {...perBlock[A].axes};
+    const infl = COUPLE[A] || {};
+    for(const [B, w] of Object.entries(infl)){
+      for(const [axis, valB] of Object.entries(perBlock[B].axes||{})){
+        const vA = mixedAxes[A][axis] || 50;
+        mixedAxes[A][axis] = vA + w*(valB - 50);
+      }
+    }
+  }
+  const mixedEntities = {};
+  for(const A of blocks){
+    mixedEntities[A] = {...perBlock[A].entities};
+    const adjFactor = 0.05;
+    const axs = mixedAxes[A];
+    const bias = Object.values(axs).length
+      ? (Object.values(axs).reduce((a,b)=>a+(b-50),0)/Object.values(axs).length)
+      : 0;
+    for(const name of Object.keys(mixedEntities[A])){
+      mixedEntities[A][name] = Math.max(0, Math.min(100, mixedEntities[A][name] + adjFactor*bias));
+    }
+  }
+  return { axes: mixedAxes, entities: mixedEntities };
 }
 
 // ===== AfD-Hinweis (neutral) wenn AfD ganz oben landet =====
-function showAfdWarning(perBlock){
+function showAfdWarning(perBlockEntities){
   const warnEl = document.getElementById('afdWarn');
   warnEl.innerHTML = "";
-  const topMayor = Object.entries(perBlock["Bürgermeister"]||{}).sort((a,b)=>b[1]-a[1])[0];
-  const topParties = weightedTotals(perBlock).parties[0];
-  const show = (topMayor && topMayor[0] && topMayor[0].includes("AfD")) || (topParties && topParties[0]==="AfD");
+  const mayorTop = Object.entries(perBlockEntities["Bürgermeister"]||{}).sort((a,b)=>b[1]-a[1])[0];
+  const partyTop = (()=>{ // Stadtrat+Kreistag kombiniert
+    const set = new Set([...Object.keys(perBlockEntities["Stadtrat"]||{}), ...Object.keys(perBlockEntities["Kreistag"]||{})]);
+    let best = ["", -1];
+    set.forEach(p=>{
+      const s = 0.5*(perBlockEntities["Stadtrat"][p]||0)+0.5*(perBlockEntities["Kreistag"][p]||0);
+      if(s>best[1]) best=[p,s];
+    });
+    return best;
+  })();
+  const show = (mayorTop && mayorTop[0] && /AfD/.test(mayorTop[0])) || (partyTop && partyTop[0]==="AfD");
   if(show){
     const box = document.createElement('div');
     box.className = 'card';
@@ -418,17 +461,28 @@ function showAfdWarning(perBlock){
     box.style.color = "#6b2b2b";
     box.style.fontSize = "13px";
     box.style.lineHeight = "1.5";
-    box.innerHTML = "<b>Hinweis:</b> Das Bundesamt für Verfassungsschutz führt die AfD als <i>rechtsextremistischen Verdachtsfall</i>. Gerichtliche Entscheidungen (OVG Münster 2024; BVerwG 2025) bestätigten die Einstufung bzw. deren Bekanntgabe. Diese Information dient der Einordnung.";
+    box.innerHTML = "<b>Hinweis:</b> Laut gerichtlichen Entscheidungen (u. a. OVG NRW 2024; BVerwG 2025) wird die AfD als <i>rechtsextremistischer Verdachtsfall</i> geführt. Diese Information dient der Einordnung.";
     warnEl.appendChild(box);
   }
 }
 
-// ===== Auswerten-Button =====
+// ===== Ergebnisbalken =====
+function pctBar(label, value){
+  const wrap = document.createElement('div');
+  wrap.className = 'result';
+  wrap.innerHTML = `<div>${label}</div>
+    <div style="min-width:52%;flex:1;margin-left:12px" class="bar"><span style="width:${value.toFixed(1)}%"></span></div>
+    <div style="width:70px;text-align:right">${value.toFixed(1)}%</div>`;
+  return wrap;
+}
+
+// ===== Auswerten =====
+document.getElementById('calc').addEventListener('click', calculate);
+
 function calculate(){
-  const total = Object.values(THESES).reduce((n, arr)=>n+arr.length, 0);
+  const total = Object.values(THESES).reduce((n, arr)=>n+arr.length, 0); // 32
   const answered = document.querySelectorAll('input[type="radio"]:checked').length;
   const answers = readAnswers();
-
   const resultsEl = document.getElementById('results');
   resultsEl.innerHTML = "";
 
@@ -440,19 +494,40 @@ function calculate(){
   }
 
   const perBlock = {};
-  for(const block of Object.keys(THESES)){ perBlock[block] = scoreBlock(block, answers[block]); }
+  for(const block of Object.keys(THESES)){
+    perBlock[block] = scoreBlock(block, answers[block]);
+  }
+  const blended = blendBlocks(perBlock);
 
-  showAfdWarning(perBlock);
+  showAfdWarning(blended.entities);
 
   for(const block of Object.keys(THESES)){
     const h = document.createElement('div');
     h.innerHTML = `<h3 style="margin:12px 0 6px">${block} <span class="muted">${COLOR_LABELS[block]||""}</span></h3>`;
     resultsEl.appendChild(h);
-    const items = Object.entries(perBlock[block]).sort((a,b)=>b[1]-a[1]);
+    const items = Object.entries(blended.entities[block]).sort((a,b)=>b[1]-a[1]);
     items.forEach(([name, val]) => resultsEl.appendChild(pctBar(name, val)));
   }
 
-  const comb = weightedTotals(perBlock);
+  function weightedTotals(perBlockEntities){
+    const partySet = new Set([
+      ...Object.keys(perBlockEntities["Stadtrat"]||{}),
+      ...Object.keys(perBlockEntities["Kreistag"]||{})
+    ]);
+    const partyScores = {};
+    partySet.forEach(p => {
+      const s = (WEIGHTS["Stadtrat"]*(perBlockEntities["Stadtrat"][p]||0) + WEIGHTS["Kreistag"]*(perBlockEntities["Kreistag"][p]||0)) / (WEIGHTS["Stadtrat"]+WEIGHTS["Kreistag"]);
+      partyScores[p] = s;
+    });
+    const sortObj = o => Object.entries(o).sort((a,b)=>b[1]-a[1]);
+    return {
+      mayor: sortObj(perBlockEntities["Bürgermeister"]||{}),
+      parties: sortObj(partyScores),
+      landrat: sortObj(perBlockEntities["Landrat"]||{})
+    };
+  }
+  const comb = weightedTotals(blended.entities);
+
   const sep = document.createElement('div');
   sep.innerHTML = `<h3 style="margin:16px 0 8px">Gesamtrichtung</h3>`;
   resultsEl.appendChild(sep);
@@ -473,8 +548,6 @@ function calculate(){
   comb.landrat.slice(0,3).forEach(([name,val]) => resultsEl.appendChild(pctBar(name,val)));
 }
 
-document.getElementById('calc').addEventListener('click', calculate);
-
 // ===== Reset =====
 document.getElementById('reset').addEventListener('click', () => {
   document.querySelectorAll('input[type="radio"]').forEach(el => el.checked=false);
@@ -488,5 +561,3 @@ document.getElementById('reset').addEventListener('click', () => {
 </script>
 </body>
 </html>
-
-
