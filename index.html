@@ -106,7 +106,7 @@
 
 <header>
   <h1>Lokaler Wahlhelfer – Bergisch Gladbach 2025</h1>
-  <p class="lead">32 Thesen • Gewichtung: Bürgermeister 40%, Stadtrat 30%, Kreistag 20%, Landrat 10% • <b>Version 1.19</b></p>
+  <p class="lead">32 Thesen • Gewichtung: Bürgermeister 40%, Stadtrat 30%, Kreistag 20%, Landrat 10% • <b>Version 1.20</b></p>
 </header>
 
 <div class="progress-wrap">
@@ -164,7 +164,7 @@
 </main>
 
 <footer>
-  <div>Lokaler Wahlhelfer – Bergisch Gladbach 2025 · <b>Version 1.19</b></div>
+  <div>Lokaler Wahlhelfer – Bergisch Gladbach 2025 · <b>Version 1.20</b></div>
   <div>Erstellt von <b>Florian Körner</b> · mit Unterstützung durch <b>KI</b></div>
   <div>Teilen: Link weitergeben; bei Fragen gern Feedback an mich.</div>
   <div class="muted">© 2025</div>
@@ -244,30 +244,40 @@ var STANCE = {
     "Alexander Becker (Volt)"        : [ 0, 1, 1, 0, 1, 0, 1, 1, 1, 0]
   },
   "Stadtrat": {
-    "CDU":             [ 1, 1, 0, 1, 1, 1, 1, 0, 1, 0],
-    "FDP":             [ 1, 1,-1, 0, 1, 1, 1, 0, 1, 0],
-    "SPD":             [ 1, 1, 1, 1, 1, 0, 1, 1, 1, 1],
-    "Grüne":           [ 1, 1, 1, 1, 1,-1, 1, 1, 1, 1],
-    "Linke":           [ 1, 0, 1, 1, 1,-1, 1, 1, 1, 1],
-    "AfD":             [ 0,-1,-1,-1,-1, 0,-1,-1,-1, 0],
-    "Volt":            [ 1, 1, 1, 1, 1,-1, 1, 1, 1, 1],
-    "FWG/Freie Wähler":[ 1, 1, 0, 0, 0, 1, 1, 0, 0, 0],
-    "Bürgerpartei GL": [ 1, 1, 0,-1, 0, 1, 0, 0,-1, 0]
+    //    11  12  13  14  15  16  17  18  19  20
+    //    OGS Best Gef Verein Digi Park Grün Barr Trans Sachk
+    "CDU":              [ 1,  1,  0,  1,  1,  1,  0,  0,  1,  0],
+    "FDP":              [ 1,  1, -1,  0,  1,  1,  0,  0,  1,  0],
+    "SPD":              [ 1,  1,  1,  1,  1,  0,  1,  1,  1,  1],
+    "Grüne":            [ 1,  1,  1,  1,  1, -1,  1,  1,  1,  1],
+    "Linke":            [ 1,  0,  1,  1,  1, -1,  1,  1,  1,  1],
+    "Volt":             [ 1,  1,  1,  1,  1,  0,  1,  1,  1,  1],
+    "FWG/Freie Wähler": [ 1,  1,  0,  0,  0,  1,  0,  0,  0,  0],
+    "Bürgerpartei GL":  [ 0,  1,  0,  0,  0,  1, -1,  0, -1,  0],
+    "AfD":              [ 0, -1, -1, -1, -1,  0, -1, -1, -1,  0]
   },
   "Kreistag": {
-    "CDU":             [ 1, 1, 1, 0, 1, 1],
-    "FDP":             [ 1, 1, 1, 0, 1, 1],
-    "SPD":             [ 1, 1, 1, 1, 1, 0],
-    "Grüne":           [ 1, 1, 1, 1, 1, 0],
-    "Linke":           [ 0, 1, 1, 1, 1,-1],
-    "AfD":             [-1, 0,-1,-1, 0, 1],
-    "Volt":            [ 1, 1, 1, 1, 1, 0],
-    "FWG/Freie Wähler":[ 0, 0, 0, 0, 1, 1],
-    "Bürgerpartei GL": [ 0, 0, 0, 0, 1, 1]
+    //    21  22  23  24  25  26
+    //    S11 GLK  BK  PV  Pfl  AuslBeh
+    "CDU":              [ 1,  1,  1,  0,  1,  1],
+    "FDP":              [ 1,  1,  1,  0,  1,  1],
+    "SPD":              [ 1,  1,  1,  1,  1,  0],
+    "Grüne":            [ 1,  1,  1,  1,  1,  0],
+    "Linke":            [ 0,  1,  1,  1,  1, -1],
+    "Volt":             [ 1,  1,  1,  1,  1,  0],
+    "FWG/Freie Wähler": [ 0,  0,  0,  0,  1,  1],
+    "Bürgerpartei GL":  [ 0,  0,  0,  0,  1,  1],
+    "AfD":              [-1,  0, -1, -1,  0,  1]
   },
   "Landrat": {
-    "CDU":       [ 1, 1, 1, 0, 1, 0],
-    "SPD/Grüne": [ 1, 1, 1, 1, 1, 1]
+    //      27  28  29  30  31  32
+    //      Kata  Pol  Koord  Energie  Pflege  Sprechst.
+    "CDU":       [ 1,   1,   1,   0,    1,     0],
+    "SPD":       [ 1,   1,   1,   1,    1,     1],
+    "Grüne":     [ 1,   1,   1,   1,    1,     1],
+    "FDP":       [ 1,   1,   1,   0,    0,     0],
+    "Linke":     [ 1,   0,   0,   1,    1,     1],
+    "AfD":       [ 1,   1,   0,  -1,    0,     0]
   }
 };
 
@@ -289,12 +299,12 @@ const AXES = {
   ]
 };
 
-// ===== Kopplungsgewichte (sanft) =====
+// ===== Kopplungsgewichte (leicht entschärft) =====
 const COUPLE = {
-  'Bürgermeister': {'Stadtrat':0.20,'Kreistag':0.10,'Landrat':0.05},
-  'Stadtrat':      {'Bürgermeister':0.20,'Kreistag':0.10},
-  'Kreistag':      {'Bürgermeister':0.10,'Stadtrat':0.10,'Landrat':0.05},
-  'Landrat':       {'Kreistag':0.10}
+  'Bürgermeister': {'Stadtrat':0.15,'Kreistag':0.08,'Landrat':0.03},
+  'Stadtrat':      {'Bürgermeister':0.15,'Kreistag':0.08},
+  'Kreistag':      {'Bürgermeister':0.08,'Stadtrat':0.08,'Landrat':0.03},
+  'Landrat':       {'Kreistag':0.08}
 };
 
 // ===== UI: Blöcke rendern =====
@@ -408,7 +418,7 @@ function scoreBlock(blockName, answers){
   return { entities: res, axes: axesOut };
 }
 
-// ===== Kopplung anwenden =====
+// ===== Kopplung anwenden (leicht) =====
 function blendBlocks(perBlock){
   const blocks = Object.keys(perBlock);
   const mixedAxes = {};
@@ -425,7 +435,7 @@ function blendBlocks(perBlock){
   const mixedEntities = {};
   for(const A of blocks){
     mixedEntities[A] = {...perBlock[A].entities};
-    const adjFactor = 0.05;
+    const adjFactor = 0.03; // sanfter als vorher
     const axs = mixedAxes[A];
     const bias = Object.values(axs).length
       ? (Object.values(axs).reduce((a,b)=>a+(b-50),0)/Object.values(axs).length)
@@ -501,14 +511,18 @@ function calculate(){
 
   showAfdWarning(blended.entities);
 
-  for(const block of Object.keys(THESES)){
+  // Pro Block anzeigen – kompakt:
+  for (const block of Object.keys(THESES)) {
     const h = document.createElement('div');
     h.innerHTML = `<h3 style="margin:12px 0 6px">${block} <span class="muted">${COLOR_LABELS[block]||""}</span></h3>`;
     resultsEl.appendChild(h);
+
     const items = Object.entries(blended.entities[block]).sort((a,b)=>b[1]-a[1]);
-    items.forEach(([name, val]) => resultsEl.appendChild(pctBar(name, val)));
+    const limit = (block === "Bürgermeister" || block === "Landrat") ? 1 : 4;
+    items.slice(0, limit).forEach(([name, val]) => resultsEl.appendChild(pctBar(name, val)));
   }
 
+  // Gesamtrichtung
   function weightedTotals(perBlockEntities){
     const partySet = new Set([
       ...Object.keys(perBlockEntities["Stadtrat"]||{}),
@@ -535,17 +549,17 @@ function calculate(){
   const sub1 = document.createElement('div');
   sub1.innerHTML = `<p class="muted">Bürgermeister (Top-Fit)</p>`;
   resultsEl.appendChild(sub1);
-  comb.mayor.slice(0,3).forEach(([name,val]) => resultsEl.appendChild(pctBar(name,val)));
+  comb.mayor.slice(0,1).forEach(([name,val]) => resultsEl.appendChild(pctBar(name,val)));
 
   const sub2 = document.createElement('div');
   sub2.innerHTML = `<p class="muted">Parteien gesamt (Stadtrat+Kreistag)</p>`;
   resultsEl.appendChild(sub2);
-  comb.parties.slice(0,5).forEach(([name,val]) => resultsEl.appendChild(pctBar(name,val)));
+  comb.parties.slice(0,4).forEach(([name,val]) => resultsEl.appendChild(pctBar(name,val)));
 
   const sub3 = document.createElement('div');
   sub3.innerHTML = `<p class="muted">Landrat (Top-Fit)</p>`;
   resultsEl.appendChild(sub3);
-  comb.landrat.slice(0,3).forEach(([name,val]) => resultsEl.appendChild(pctBar(name,val)));
+  comb.landrat.slice(0,1).forEach(([name,val]) => resultsEl.appendChild(pctBar(name,val)));
 }
 
 // ===== Reset =====
